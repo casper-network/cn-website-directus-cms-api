@@ -1,0 +1,188 @@
+{{- if .Values.createNamespace}}
+apiVersion: v1
+kind: Namespace
+metadata:
+ name: {{.Values.namespace}}
+{{- end}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{.Values.namespace}}
+  name: {{.Values.appName}}-{{.Values.envName}}-svc
+  labels:
+    app: {{.Values.appName}}-{{.Values.envName}}
+spec:
+  type: ClusterIP
+  ports:
+  - port: {{.Values.servicePort}}
+  selector:
+    app: {{.Values.appName}}-{{.Values.envName}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: {{.Values.namespace}}
+  name: {{.Values.appName}}-{{.Values.envName}}-ingress
+  annotations:     
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/server-alias: {{.Values.publicDomainName}}
+spec:
+  tls:
+  - hosts:
+    - {{.Values.appName}}-{{.Values.envName}}.{{.Values.dnsSuffix}}
+    {{- if .Values.publicDomainName}}
+    - {{.Values.publicDomainName}}
+    {{- end}}
+    secretName: {{.Values.appName}}-{{.Values.envName}}.{{.Values.dnsSuffix}}-tls
+  rules:
+  - host: {{.Values.appName}}-{{.Values.envName}}.{{.Values.dnsSuffix}}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{.Values.appName}}-{{.Values.envName}}-svc
+            port:
+              number: {{.Values.servicePort}}
+  ingressClassName: nginx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{.Values.namespace}}
+  name: {{.Values.appName}}-{{.Values.envName}}
+  labels:
+    app: {{.Values.appName}}-{{.Values.envName}}
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: {{.Values.appName}}-{{.Values.envName}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.appName}}-{{.Values.envName}}
+    spec:
+      containers:
+      - name: {{.Values.appName}}-{{.Values.envName}}
+        image: {{.Values.artifactImage}}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{.Values.containerPort}}
+        resources:
+          requests:
+            memory: {{.Values.resourceMemoryRequest}}
+            cpu: {{.Values.resourceCpuRequest}}
+          limits:
+            memory: {{.Values.resourceMemoryLimit}}
+            cpu: {{.Values.resourceCpuLimit}}            
+        env:
+        - name: HOST
+          value: "{{.Values.host}}"
+        - name: PORT
+          value: "{{.Values.servicePort}}"
+        - name: PUBLIC_URL
+          value: "{{.Values.publicUrl}}"
+        - name: LOG_LEVEL
+          value: "{{.Values.logLevel}}"
+        - name: LOG_STYLE
+          value: "{{.Values.logStyle}}"
+        - name: ADMIN_EMAIL
+          value: "{{.Values.adminEmail}}"
+        - name: ADMIN_PASSWORD
+          value: "{{.Values.adminPassword}}"
+        - name: DB_CLIENT
+          value: "{{.Values.dbClient}}"
+        - name: DB_HOST
+          value: "{{.Values.dbHost}}"
+        - name: DB_PORT
+          value: "{{.Values.dbPort}}"
+        - name: DB_USER
+          value: "{{.Values.dbUser}}"
+        - name: DB_PASSWORD
+          value: "{{.Values.dbPassword}}"
+        - name: RATE_LIMITER_ENABLED
+          value: "{{.Values.rateLimiterEnabled}}"
+        - name: RATE_LIMITER_POINTS
+          value: "{{.Values.rateLimiterPoints}}"
+        - name: RATE_LIMITER_DURATION
+          value: "{{.Values.rateLimiterDuration}}"
+        - name: RATE_LIMITER_STORE
+          value: "{{.Values.rateLimiterStore}}"
+        - name: CACHE_ENABLED
+          value: "{{.Values.cacheEnabled}}"
+        - name: CACHE_TTL
+          value: "{{.Values.cacheTtl}}"
+        - name: CACHE_NAMESPACE
+          value: "{{.Values.cacheNamespace}}"
+        - name: CACHE_AUTO_PURGE
+          value: "{{.Values.cacheAutoPurge}}"
+        - name: CACHE_STORE
+          value: "{{.Values.cacheStore}}"
+        - name: ASSETS_CACHE_TTL
+          value: "{{.Values.assetsCacheTtl}}"
+        - name: STORAGE_LOCATIONS
+          value: "{{.Values.storageLocations}}"
+        - name: STORAGE_LOCAL_DRIVER
+          value: "{{.Values.storageLocalDriver}}"
+        - name: STORAGE_LOCAL_ROOT
+          value: "{{.Values.storageLocalRoot}}"
+        - name: STORAGE_S3_DRIVER
+          value: "{{.Values.storageS3Driver}}"
+        - name: STORAGE_S3_KEY
+          value: "{{.Values.storageS3Key}}"
+        - name: STORAGE_S3_SECRET
+          value: "{{.Values.storageS3Secret}}"
+        - name: STORAGE_S3_ENDPOINT
+          value: "{{.Values.storageS3Endpoint}}"
+        - name: STORAGE_S3_BUCKET
+          value: "{{.Values.storageS3Bucket}}"
+        - name: STORAGE_S3_REGION
+          value: "{{.Values.storageS3Region}}"
+        - name: KEY
+          value: "{{.Values.key}}"
+        - name: SECRET
+          value: "{{.Values.secret}}"
+        - name: ACCESS_TOKEN_TTL
+          value: "{{.Values.accessTokenTtl}}"
+        - name: REFRESH_TOKEN_TTL
+          value: "{{.Values.refreshTokenTtl}}"
+        - name: REFRESH_TOKEN_COOKIE_SECURE
+          value: "{{.Values.refreshTokenCookieSecure}}"
+        - name: REFRESH_TOKEN_COOKIE_SAME_SITE
+          value: "{{.Values.refreshTokenCookieSameSite}}"
+        - name: REFRESH_TOKEN_COOKIE_NAME
+          value: "{{.Values.refreshTokenCookieName}}"
+        - name: CONTENT_SECURITY_POLICY_DIRECTIVES__SCRIPT_SRC
+          value: "{{.Values.contentSecurityPolicyDirectivesScriptSrc}}"
+        - name: CONTENT_SECURITY_POLICY_DIRECTIVES__IMG_SRC
+          value: "{{.Values.contentSecurityPolicyDirectivesImgSrc}}"
+        - name: CORS_ENABLED
+          value: "{{.Values.corsEnabled}}"
+        - name: CORS_ORIGIN
+          value: "{{.Values.corsOrigin}}"
+        - name: CORS_METHODS
+          value: "{{.Values.corsMethods}}"
+        - name: CORS_ALLOWED_HEADERS
+          value: "{{.Values.corsAllowedHeaders}}"
+        - name: CORS_EXPOSED_HEADERS
+          value: "{{.Values.corsExposedHeaders}}"
+        - name: CORS_CREDENTIALS
+          value: "{{.Values.corsCredentials}}"
+        - name: CORS_MAX_AGE
+          value: "{{.Values.corsMaxAge}}"
+        - name: EXTENSIONS_PATH
+          value: "{{.Values.extensionsPath}}"
+        - name: EXTENSIONS_AUTO_RELOAD
+          value: "{{.Values.extensionsAutoReload}}"
+        - name: EMAIL_FROM
+          value: "{{.Values.emailFrom}}"
+        - name: EMAIL_TRANSPORT
+          value: "{{.Values.emailTransport}}"
+        - name: EMAIL_SENDMAIL_NEW_LINE
+          value: "{{.Values.emailSendmailNewLine}}"
+        - name: EMAIL_SENDMAIL_PATH
+          value: "{{.Values.emailSendmailPath}}"
+
