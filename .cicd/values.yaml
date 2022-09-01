@@ -1,0 +1,85 @@
+# K8S / Harness
+envName: <+env.name>
+appName: <+service.name> 
+artifactImage: <+artifact.image> #from Harness Service Primary Artifact
+containerPort: 80
+servicePort: 80
+createNamespace: true
+namespace:  <+service.name>-<+env.name>
+publicDomainName: <+serviceVariables.publicDomainName>
+dnsSuffix: <+serviceVariables.dnsSuffix>
+
+# Application
+## General
+Host: <+serviceVariables.host>
+#Port: <servicePort>
+publicUrl: <+serviceVariables.publicUrl>
+logLevel: <+serviceVariables.logLevel>
+logStyle: <+serviceVariables.logStyle>
+adminEmail: <+serviceVariables.adminEmail>
+adminPassword: <+serviceVariables.adminPassword>
+
+## DB
+dBClient: <+serviceVariables.dbClient>
+dbHost: <+serviceVariables.dbHost>
+dbPort: <+serviceVariables.dbPort>
+dbDatabase: <+serviceVariables.dbDatabase>
+dBUser: <+serviceVariables.dbUser>
+dBPassword: <+serviceVariables.dbPassword>
+
+## Rate Limiting
+rateLimiterEnabled: <+serviceVariables.rateLimiterEnabled>
+rateLimiterPoints: <+serviceVariables.rateLimiterPoints>
+rateLimiterDuration: <+serviceVariables.rateLimiterDuration>
+rateLimiterStore: <+serviceVariables.rateLimiterStore>
+
+## Caching
+cacheEnabled: <+serviceVariables.cacheEnabled>
+cacheTTL: <+serviceVariables.cacheTTL>
+cacheNamespace: <+serviceVariables.cacheNamespace>
+cacheAutoPurge: <+serviceVariables.cacheAutoPurge>
+cacheStore: <+serviceVariables.cacheStore>
+assetsCacheTTL: <+serviceVariables.assetsCacheTTL>
+
+
+## File Storage
+storageLocations: <+serviceVariables.storageLocations>
+storageLocalDriver: <+serviceVariables.storageLocalDriver>
+storageLocalRoot: <+serviceVariables.storageLocalRoot>
+storageS3Driver: <+serviceVariables.storageS3Driver>
+storageS3Key: <+serviceVariables.storageS3Key>
+storageS3Secret: <+serviceVariables.storageS3Secret>
+storageS3Endpoint: <+serviceVariables.storageS3Endpoint>
+storageS3Region: <+serviceVariables.storageS3Region>
+storageS3Bucket: <+serviceVariables.storageS3Bucket>
+
+## Security
+key: <+serviceVariables.key>
+secret: <+serviceVariables.secret>
+accessTokenTTL: <+serviceVariables.accessTokenTTL>
+refreshTokenTTL: <+serviceVariables.refreshTokenTTL>
+refreshTokenCookieSecure: <+serviceVariables.refreshTokenCookieSecure>
+refreshTokenCookieSameSite: <+serviceVariables.refreshTokenCookieSameSite>
+refreshTokenCookieName: <+serviceVariables.refreshTokenCookieName>
+
+contentSecurityPolicyDirectives_ScriptSrc: <+serviceVariables.contentSecurityPolicyDirectivesScriptSrc>
+contentSecurityPolicyDirectives_ImgSrc: <+serviceVariables.contentSecurityPolicyDirectivesImgSrc>
+
+corsEnabled: <+serviceVariables.corsEnabled>
+corsOrigin: <+serviceVariables.corsOrigin>
+corsMethods: <+serviceVariables.corsMethods>
+corsAllowedHeaders: <+serviceVariables.corsAllowedHeaders>
+corsExposedHeaders: <+serviceVariables.corsExposedHeaders>
+corsCredentials: <+serviceVariables.corsCredentials>
+corsMaxAge: <+serviceVariables.corsMaxAge>
+
+## Extensions
+extensionsPath: <+serviceVariables.extensionsPath>
+extensionsAutoReload: <+serviceVariables.extensionsAutoReload>
+
+## Email (not used)
+emailFrom: <+serviceVariables.emailFrom>
+emailTransport: <+serviceVariables.emailTransport>
+
+emailSendmailNewLine: <+serviceVariables.emailSendmailNewLine>
+emailSendmailPath: <+serviceVariables.emailSendmailPath>
