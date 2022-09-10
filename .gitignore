@@ -88,6 +88,9 @@ dist
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
 
+# directus upload directory
+uploads/
+
 # vuepress build output
 .vuepress/dist
 
@@ -102,3 +105,13 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
