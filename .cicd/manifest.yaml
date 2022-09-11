@@ -103,6 +103,8 @@ spec:
           value: "{{.Values.dbUser}}"
         - name: DB_PASSWORD
           value: "{{.Values.dbPassword}}"
+        - name: DB_DATABASE
+          value: "{{.Values.dbDatabase}}"          
         - name: RATE_LIMITER_ENABLED
           value: "{{.Values.rateLimiterEnabled}}"
         - name: RATE_LIMITER_POINTS
