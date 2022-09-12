@@ -116,7 +116,7 @@ spec:
         - name: CACHE_ENABLED
           value: "{{.Values.cacheEnabled}}"
         - name: CACHE_TTL
-          value: "{{.Values.cacheTtl}}"
+          value: "{{.Values.cacheTTL}}"
         - name: CACHE_NAMESPACE
           value: "{{.Values.cacheNamespace}}"
         - name: CACHE_AUTO_PURGE
@@ -124,7 +124,7 @@ spec:
         - name: CACHE_STORE
           value: "{{.Values.cacheStore}}"
         - name: ASSETS_CACHE_TTL
-          value: "{{.Values.assetsCacheTtl}}"
+          value: "{{.Values.assetsCacheTTL}}"
         - name: STORAGE_LOCATIONS
           value: "{{.Values.storageLocations}}"
         - name: STORAGE_LOCAL_DRIVER
@@ -148,18 +148,18 @@ spec:
         - name: SECRET
           value: "{{.Values.secret}}"
         - name: ACCESS_TOKEN_TTL
-          value: "{{.Values.accessTokenTtl}}"
+          value: "{{.Values.accessTokenTTL}}"
         - name: REFRESH_TOKEN_TTL
-          value: "{{.Values.refreshTokenTtl}}"
+          value: "{{.Values.refreshTokenTTL}}"
         - name: REFRESH_TOKEN_COOKIE_SECURE
           value: "{{.Values.refreshTokenCookieSecure}}"
         - name: REFRESH_TOKEN_COOKIE_SAME_SITE
           value: "{{.Values.refreshTokenCookieSameSite}}"
         - name: REFRESH_TOKEN_COOKIE_NAME
           value: "{{.Values.refreshTokenCookieName}}"
-        - name: CONTENT_SECURITY_POLICY_DIRECTIVES__SCRIPT_SRC
+        - name: CONTENT_SECURITY_POLICY_DIRECTIVES_SCRIPT_SRC
           value: "{{.Values.contentSecurityPolicyDirectivesScriptSrc}}"
-        - name: CONTENT_SECURITY_POLICY_DIRECTIVES__IMG_SRC
+        - name: CONTENT_SECURITY_POLICY_DIRECTIVES_IMG_SRC
           value: "{{.Values.contentSecurityPolicyDirectivesImgSrc}}"
         - name: CORS_ENABLED
           value: "{{.Values.corsEnabled}}"
