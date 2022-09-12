@@ -20,12 +20,12 @@ adminEmail: <+serviceVariables.adminEmail>
 adminPassword: <+serviceVariables.adminPassword>
 
 ## DB
-dBClient: <+serviceVariables.dbClient>
+dbClient: <+serviceVariables.dbClient>
 dbHost: <+serviceVariables.dbHost>
 dbPort: <+serviceVariables.dbPort>
 dbDatabase: <+serviceVariables.dbDatabase>
-dBUser: <+serviceVariables.dbUser>
-dBPassword: <+serviceVariables.dbPassword>
+dbUser: <+serviceVariables.dbUser>
+dbPassword: <+serviceVariables.dbPassword>
 
 ## Rate Limiting
 rateLimiterEnabled: <+serviceVariables.rateLimiterEnabled>
