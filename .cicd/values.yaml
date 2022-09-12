@@ -62,8 +62,8 @@ refreshTokenCookieSecure: <+serviceVariables.refreshTokenCookieSecure>
 refreshTokenCookieSameSite: <+serviceVariables.refreshTokenCookieSameSite>
 refreshTokenCookieName: <+serviceVariables.refreshTokenCookieName>
 
-contentSecurityPolicyDirectives_ScriptSrc: <+serviceVariables.contentSecurityPolicyDirectivesScriptSrc>
-contentSecurityPolicyDirectives_ImgSrc: <+serviceVariables.contentSecurityPolicyDirectivesImgSrc>
+contentSecurityPolicyDirectivesScriptSrc: <+serviceVariables.contentSecurityPolicyDirectivesScriptSrc>
+contentSecurityPolicyDirectivesImgSrc: <+serviceVariables.contentSecurityPolicyDirectivesImgSrc>
 
 corsEnabled: <+serviceVariables.corsEnabled>
 corsOrigin: <+serviceVariables.corsOrigin>
