@@ -11,7 +11,7 @@ dnsSuffix: <+serviceVariables.dnsSuffix>
 
 # Application
 ## General
-Host: <+serviceVariables.host>
+host: <+serviceVariables.host>
 #Port: <servicePort>
 publicUrl: <+serviceVariables.publicUrl>
 logLevel: <+serviceVariables.logLevel>
