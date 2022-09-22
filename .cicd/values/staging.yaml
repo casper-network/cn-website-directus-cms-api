@@ -5,5 +5,5 @@ replicaCount: 2
 resourceCpuRequest: 100m
 resourceCpuLimit: 1
 
-resourceMemoryRequest: 200Mi
-resourceMemoryLimit: 2Gi
+resourceMemoryRequest: 100Mi
+resourceMemoryLimit: 1Gi
