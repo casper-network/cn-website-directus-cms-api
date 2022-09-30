@@ -116,5 +116,6 @@ Could be left alone, but advised to change. Detailed information can be found [h
 ### Extensions Variables
 Should be left alone.
 
+
 ### Email Variables
 Currently we aren't using email. Left for future reference. Detailed information can be found [here](https://docs.directus.io/self-hosted/config-options.html#email)
