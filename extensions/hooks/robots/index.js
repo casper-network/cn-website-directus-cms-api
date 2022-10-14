@@ -1,0 +1,1 @@
+"use strict";const t="\nUser-agent: Twitterbot\nAllow: /\n\nUser-agent: *\nDisallow: /\n".trim();module.exports=({init:e})=>{e("app.before",(({app:e})=>{e.get("/robots.txt",((e,n)=>{n.set("Content-Type","text/plain"),n.status(200),n.send(t)}))}))};
