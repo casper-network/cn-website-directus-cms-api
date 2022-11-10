@@ -27,6 +27,7 @@ metadata:
   annotations:     
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/server-alias: {{.Values.publicDomainName}}
+    nginx.ingress.kubernetes.io/proxy-body-size: 256m
 spec:
   tls:
   - hosts:
