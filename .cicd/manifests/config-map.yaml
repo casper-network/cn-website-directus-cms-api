@@ -43,8 +43,8 @@ data:
   REFRESH_TOKEN_COOKIE_SECURE: {{.Values.refreshTokenCookieSecure}}
   REFRESH_TOKEN_COOKIE_SAME_SITE: {{.Values.refreshTokenCookieSameSite}}
   REFRESH_TOKEN_COOKIE_NAME: {{.Values.refreshTokenCookieName}}
-  CONTENT_SECURITY_POLICY_DIRECTIVES_SCRIPT_SRC: {{.Values.contentSecurityPolicyDirectivesScriptSrc}}
-  CONTENT_SECURITY_POLICY_DIRECTIVES_IMG_SRC: {{.Values.contentSecurityPolicyDirectivesImgSrc}}
+  CONTENT_SECURITY_POLICY_DIRECTIVES_SCRIPT_SRC: "{{.Values.contentSecurityPolicyDirectivesScriptSrc}}"
+  CONTENT_SECURITY_POLICY_DIRECTIVES_IMG_SRC: "{{.Values.contentSecurityPolicyDirectivesImgSrc}}"
   CORS_ENABLED: {{.Values.corsEnabled}}
   CORS_ORIGIN: {{.Values.corsOrigin}}
   CORS_METHODS: {{.Values.corsMethods}}
