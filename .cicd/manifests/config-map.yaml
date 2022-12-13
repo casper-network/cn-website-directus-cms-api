@@ -58,3 +58,6 @@ data:
   EMAIL_TRANSPORT: {{.Values.emailTransport}}
   EMAIL_SENDMAIL_NEW_LINE: {{.Values.emailSendmailNewLine}}
   EMAIL_SENDMAIL_PATH: {{.Values.emailSendmailPath}}
+  EMAIL_SES_CREDENTIALS_ACCESS_KEY_ID: {{.Values.emailSesCredentialsAccessKeyId}}
+  EMAIL_SES_CREDENTIALS_SECRET_ACCESS_KEY: {{.Values.emailSesCredentialsSecretAccessKey}}
+  EMAIL_SES_REGION: {{.Values.emailSesRegion}}

@@ -76,9 +76,13 @@ corsMaxAge: <+serviceVariables.corsMaxAge>
 extensionsPath: <+serviceVariables.extensionsPath>
 extensionsAutoReload: <+serviceVariables.extensionsAutoReload>
 
-## Email (not used)
+## Email
 emailFrom: <+serviceVariables.emailFrom>
 emailTransport: <+serviceVariables.emailTransport>
 
 emailSendmailNewLine: <+serviceVariables.emailSendmailNewLine>
 emailSendmailPath: <+serviceVariables.emailSendmailPath>
+
+emailSesCredentialsAccessKeyId: <+serviceVariables.emailSesCredentialsAccessKeyId>
+emailSesCredentialsSecretAccessKey: <+serviceVariables.emailSesCredentialsSecretAccessKey>
+emailSesRegion: <+serviceVariables.emailSesRegion>
