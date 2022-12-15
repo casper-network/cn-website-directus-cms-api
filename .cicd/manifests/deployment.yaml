@@ -31,7 +31,3 @@ spec:
         envFrom:
         - configMapRef:
             name: {{.Values.appName}}-{{.Values.envName}}-config
-
-
-  
-       
